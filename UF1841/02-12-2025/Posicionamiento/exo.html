@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>micro:bit developer community</title>
+  <style>
+    :root {
+      --bg: #0b132b;
+      --card: #1c2541;
+      --accent: #3a506b;
+      --primary: #5bc0be;
+      --text: #eaf2f8;
+      --muted: #c7d3e0;
+      --link: #5bc0be;
+      --btn: #5bc0be;
+      --btn-text: #0b132b;
+      --btn-dark: #3a506b;
+      --btn-dark-text: #eaf2f8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), #0f1a3a 50%, var(--bg) 100%);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      padding: 64px 20px 24px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2rem;
+      letter-spacing: 0.2px;
+    }
+    header p {
+      margin: 0 auto;
+      max-width: 800px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+    .card {
+      background: rgba(28, 37, 65, 0.8);
+      border: 1px solid rgba(91, 192, 190, 0.15);
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      padding: 24px;
+      margin-bottom: 20px;
+      backdrop-filter: saturate(1.2) blur(4px);
+    }
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+    }
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 840px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      background: var(--btn);
+      color: var(--btn-text);
+      border: 1px solid rgba(0,0,0,0.1);
+      transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(0,0,0,0.25); }
+    .btn.secondary {
+      background: var(--btn-dark);
+      color: var(--btn-dark-text);
+      border-color: rgba(91, 192, 190, 0.2);
+    }
+    .section-title {
+      font-size: 1.2rem;
+      margin: 18px 0 10px;
+      color: #dfe8f3;
+    }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 22px 20px 40px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      background: radial-gradient(1200px 400px at 50% -200px, rgba(91,192,190,0.07), transparent 60%);
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 720px) {
+      .footer-inner {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .copyright { text-align: right; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to the micro:bit developer community</h1>
+    <p>
+      A community wiki and technical datasheet for micro:bit. Open-source content maintained by the Micro:bit Educational
+      Foundation to document hardware and software. Contributions help broaden the ecosystem and improve resources for
+      developers and educators.
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>The micro:bit developer community site</h2>
+      <p>
+        This site aims to serve as both a community wiki and a technical datasheet for the BBC micro:bit. It is open-source,
+        available on GitHub under a Creative Commons license, and maintained by the Micro:bit Educational Foundation to
+        document hardware and software related to micro:bit. We welcome contributions to expand and strengthen the ecosystem.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Latest news</h2>
+      <p>
+        Stay up to date: subscribe to developer and ecosystem news or join the developer community on Slack.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="#" aria-label="Subscribe to developer and ecosystem news">
+          Subscribe to developer and ecosystem news
+        </a>
+        <a class="btn secondary" href="#" aria-label="Join the developer community on Slack">
+          Join the developer community on Slack
+        </a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Help us build it</h2>
+
+        <h3 class="section-title">Code</h3>
+        <p>Upstream projects the micro:bit relies on:</p>
+        <ul>
+          <li>The micro:bit Device Abstraction Layer (DAL/runtime)</li>
+          <li>The MakeCode Editor</li>
+          <li>The Python Editor</li>
+          <li>DAPLink</li>
+        </ul>
+
+        <h3 class="section-title">Build</h3>
+        <p>Build the hardware ecosystem and accessories:</p>
+        <ul>
+          <li>The micro:bit schematic and reference design</li>
+          <li>The accessories guide</li>
+        </ul>
+
+        <h3 class="section-title">Write</h3>
+        <p>Improve documentation, report issues, and help grow the community via the Slack channel and email list.</p>
+      </article>
+
+      <aside class="card">
+        <h2>Contribute</h2>
+        <p>
+          Whether you’re coding, designing accessories, or writing docs, your contributions help the micro:bit community
+          thrive. Share guides, report bugs, and propose improvements to make micro:bit better for everyone.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="#" aria-label="View contribution guide">View contribution guide</a>
+          <a class="btn secondary" href="#" aria-label="Open GitHub repository">Open GitHub</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links" aria-label="Footer links">
+        <a href="#">Terms of use</a>
+        <a href="#">Privacy</a>
+        <a href="#">Safeguarding</a>
+        <a href="#">Support</a>
+        <a href="#">Newsletter</a>
+        <a href="#">microbit.org</a>
+      </div>
+      <div class="copyright">
+        © Copyright 2016 Micro:bit Educational Foundation
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

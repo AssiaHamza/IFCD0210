@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades relativas</title>
+    <style>
+        html{
+        /* font-size: 60px; */
+        }
+        :root
+        .Padre{
+            font-size: 20px;
+            color: #ff0000;
+        }
+        .Hijo{
+            font-size: 0.5rem;
+            color: green;
+        }
+        .Nieto{
+            font-size: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        Unidades relativas
+        <ul>
+        <li>em: font-size proportional al elemento padre</li>
+        <li>rem: Font-Size. Proportional al elemento raiz</li>
+        <li>porcentajes</li>
+        <li>vw y hw</li>
+    </ul>
+    </p>
+    <div class="Padre">
+        Soy tu padre
+        <p class="Hijo">
+        Soy el hijo
+        <span class="Nieto">
+        Soy el Nieto
+        </span>
+        </p>
+        <p>
+            Soy el nieto falso
+        </p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/*selectores*/
+
+
+/*selector de elemento*/
+
+h3 {
+    color: brown;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 100px;
+    background-color: blue;
+}
+
+/*selectores  por id*/
+#inicio{
+    font-size: 50px;
+    text-align: right;
+    color: blue;
+}
+/*selectores genericos*/
+
+.general {
+    color: tomato;
+    text-decoration: underline;
+    font-size: 40px;
+}
