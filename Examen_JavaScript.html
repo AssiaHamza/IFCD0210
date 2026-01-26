@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let edad = 35;
+
+        if (edad >= 18){
+            console.log("Eres mayor de edad");
+        }
+        else {console.log("Eres menor de edad");}
+    </script>
+
+    <script>
+        let numeros = [3, 7, 2, 9, 5, 10];
+
+        for (let i = 0; i < numeros.length; i++){
+            console.log(numeros[i]);
+        }
+
+        let suma = 0;
+
+        for (let i = 0; i < numeros.length; i++){
+            suma = suma + numeros[i];
+            console.log("Suma total:" + suma);
+        }
+
+        let ul = document.createElement("ul");
+        for (let i = 0; i < numeros.length; i++){
+            let li = document.createElement("li");
+            li.textContent = numeros[i];
+            ul.appendChild(li);
+        }
+        document.body.appendChild(ul);
+
+        function calcularResultado(notas){
+            let suma = 0;
+            for (let i = 0; i < notas.length; i++){
+                suma += notas[i];
+            }
+            
+            let media = suma/notas.length;
+            
+            let estado = media >= 5;
+            let calificacion = "";
+            if (media < 5){
+                calificacion = "Insuficiente";
+            }
+            else if(media < 7){
+                calificacion = "Suficiente";
+            }
+            else {
+                calificacion = "Sobresaliente";
+            }
+            return [media, estado, calificacion]
+
+            }
+            let notasAlumno = [6, 7, 1, 9, 5];
+            let resultado = calcularResultado(notasAlumno);
+            console.log("Meddia", resultado[0]);
+            console.log("Estado", resultado[1]);
+            console.log("Suficiente", resultado[2]);
+
+            let div = document.createElement("div");
+            div.innerHTML = `<p><strong>Media</strong> ${resultado[0].toFixed(2)}</p>
+                             <p><strong>Estado</strong> ${resultado[1]}</p>
+                             <p><strong>Calificacion</strong> ${resultado[2]}</p>
+                             `;
+            document.body.appendChild(div);
+        
+    </script>
+</body>
+</html>
