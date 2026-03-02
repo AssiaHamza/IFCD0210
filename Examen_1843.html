@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidado de Informes: Usabilidad y Accesibilidad</title>
+    <style>
+   
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background-color: #f4f7f6; 
+        }
+        .container {
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        h1 { 
+            color: #2c3e50; 
+            border-bottom: 2px solid #3498db; 
+            padding-bottom: 10px; 
+        }
+        h2 { 
+            font-size: 1.4em; 
+            color: #2980b9; 
+            margin-top: 25px; 
+            border-left: 5px solid #3498db;
+            padding-left: 10px;
+        }
+        .field-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #555; }
+        
+        input[type="text"], textarea { 
+            width: 100%; padding: 10px; border: 1px solid #ddd; 
+            border-radius: 4px; box-sizing: border-box; background-color: #fafafa; 
+        }
+        textarea { height: 80px; resize: vertical; }
+
+
+        .status-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; color: white; margin-left: 10px; }
+        .bad { background-color: #e74c3c; }
+        .med { background-color: #f39c12; }
+        .status-pass { color: #27ae60; font-weight: bold; }
+
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+
+        hr { border: 0; height: 1px; background: #eee; margin: 40px 0; }
+        blockquote { border-left: 4px solid #3498db; padding-left: 15px; font-style: italic; color: #666; }
+        footer { text-align: center; font-size: 0.8em; color: #888; margin-top: 40px; }
+        
+        .close-btn { 
+            background-color: #e74c3c; color: white; border: none; 
+            padding: 5px 10px; border-radius: 4px; cursor: pointer; float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Informe de Evaluación Básica</h1>
+        <p><strong>Objetivo:</strong> Identificar problemas de claridad, navegación y retroalimentación.</p>
+
+        <div class="field-group">
+            <label for="url-usability">1. Página Web Evaluada:</label>
+            <input type="text" id="url-usability" value="Portal de Trámites Municipales" readonly>
+        </div>
+
+        <h2>2. Análisis de Aspectos de Interfaz</h2>
+        <div class="grid">
+            <div class="field-group">
+                <label>Claridad de Botones <span class="status-tag bad">Bajo</span></label>
+                <textarea readonly>Etiquetas ambiguas como "Iniciar Expediente" en lugar de "Solicitar Beca". Los botones secundarios tienen el mismo color que los primarios.</textarea>
+            </div>
+            <div class="field-group">
+                <label>Consistencia <span class="status-tag med">Medio</span></label>
+                <textarea readonly>La barra lateral desaparece al entrar en formularios de terceros, perdiendo el hilo conductor de la navegación principal.</textarea>
+            </div>
+            <div class="field-group">
+                <label>Retroalimentación <span class="status-tag bad">Crítico</span></label>
+                <textarea readonly>No hay indicadores de carga (spinners) tras enviar archivos pesados. El usuario no sabe si el proceso continúa activo.</textarea>
+            </div>
+            <div class="field-group">
+                <label>Jerarquía Visual <span class="status-tag med">Medio</span></label>
+                <textarea readonly>Demasiado texto con el mismo peso visual. Los avisos legales compiten en importancia con el botón de "Acceso Ciudadano".</textarea>
+            </div>
+        </div>
+
+        <h2>3. Hallazgos y Soluciones</h2>
+        <div class="field-group">
+            <label>Problemas de Usabilidad Identificados:</label>
+            <textarea readonly>1. Error de prevención: No hay validación de campos en tiempo real.
+2. Navegación "Ciega": Falta de Breadcrumbs (Migas de Pan).
+3. Lenguaje Excluyente: Uso excesivo de tecnicismos legales.</textarea>
+        </div>
+        
+        <div class="field-group">
+            <label>Mejoras Propuestas:</label>
+            <textarea readonly>- Implementar una "Barra de Progreso" visual para trámites de varios pasos.
+- Reorganizar la Home basada en "Tareas Frecuentes" (ej: Pagar multa, Pedir cita).</textarea>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <h1>Informe de Accesibilidad Operable</h1>
+        <p><strong>Ejercicio:</strong> Navegación sin ratón (Teclado únicamente)</p>
+        
+        <div class="field-group">
+            <label for="url-a11y">Página Web Evaluada:</label>
+            <input type="text" id="url-a11y" value="Wikipedia.org" readonly>
+        </div>
+
+        <section>
+            <h2>1. Resumen de la Evaluación</h2>
+            <p>Se ha evaluado la operabilidad del sitio web utilizando exclusivamente las teclas <strong>TAB</strong>, <strong>SHIFT + TAB</strong> y <strong>ENTER</strong> para verificar el cumplimiento de las pautas de accesibilidad (WCAG 2.1).</p>
+        </section>
+
+        <section>
+            <h2>2. Resultados de los Criterios</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio de Evaluación</th>
+                        <th>Estado</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Acceso a elementos interactivos</strong></td>
+                        <td class="status-pass">Cumple</td>
+                        <td>Todos los enlaces y botones son alcanzables en un orden lógico. Sin trampas de teclado.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visibilidad del foco</strong></td>
+                        <td class="status-pass">Cumple</td>
+                        <td>Se muestra un indicador visual claro (contorno azul) al navegar por los menús laterales y artículos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Posibilidad de completar tareas</strong></td>
+                        <td class="status-pass">Cumple</td>
+                        <td>Se logró realizar una búsqueda de término y navegar por las secciones del artículo sin ratón.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>3. Conclusiones Técnicas</h2>
+            <p>El sitio web presenta una <strong>operatividad excelente</strong>. El orden de tabulación coincide con la jerarquía visual de la página y el uso de enlaces "Saltar al contenido" mejora significativamente la experiencia del usuario de teclado.</p>
+        </section>
+        <img src="grafico.png" alt="Gráfico de barras que muestra el crecimiento de usuarios en el último trimestre">
+        <button class="close-btn" aria-label="Cerrar ventana" title="Cerrar">X</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Examen 1843</p>
+    </footer>
+
+</body>
+</html>
