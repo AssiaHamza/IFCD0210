@@ -79,13 +79,13 @@ def procesar_usuarios():
         {"nombre": "Carlos", "edad": 30}
     ]
     
-    # 1. Filtre mayores de edad (>= 18)
+    # 1. Mayores de edad
     mayores = [u for u in usuarios if u['edad'] >= 18]
     
-    # 2. Muestre sus nombres
+    # 2. Muestre nombres
     nombres = [u['nombre'] for u in mayores]
     
-    # 3. Calcule la edad media (de todos)
+    # 3. Calcule edad media
     edades = [u['edad'] for u in usuarios]
     media = sum(edades) / len(edades)
     
