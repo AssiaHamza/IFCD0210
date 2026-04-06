@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica Avanzada - Python & SQL</title>
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: auto; padding: 20px; background: #fdfefe; }
+        .card { background: white; padding: 20px; margin-bottom: 25px; border-radius: 10px; border: 1px solid #e1e4e8; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h2 { color: #2c3e50; border-left: 5px solid #8e44ad; padding-left: 10px; }
+        .sql-box { background: #f4f4f4; padding: 15px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 0.9em; color: #2980b9; }
+        .py-output { background: #2d3436; color: #fab1a0; padding: 15px; border-radius: 8px; font-family: monospace; white-space: pre-wrap; margin-top: 10px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        .label { font-weight: bold; color: #636e72; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; color: #8e44ad;">Ejercicios de Programación y Datos</h1>
+
+    <div class="card">
+        <h2>1. Validador de Contraseña</h2>
+        <p class="label">Mínimo 8 caracteres, una mayúscula, un número y un carácter especial.</p>
+        <input id="pass_input" type="text" py-input="validar_pass" placeholder="Prueba una contraseña...">
+        <div id="out_pass" class="py-output">Introduce una contraseña para validar</div>
+    </div>
+
+    <div class="card">
+        <h2>2. Procesamiento de Datos (JSON)</h2>
+        <p class="label">Filtrar mayores de edad y calcular edad media.</p>
+        <div id="out_json" class="py-output">Cargando procesamiento de datos...</div>
+    </div>
+
+    <div class="card">
+        <h2>3. Consultas SQL (Base de Datos Jardinería)</h2>
+        <p><b>a. Pedidos rechazados en 2009:</b></p>
+        <div class="sql-box">SELECT * from pedido p where p.estado = 'rechazado' AND p.fecha_pedido BETWEEN '2009/01/01' and '2009/12/31';</div>
+        
+        <p><b>b. Pedidos entregados en enero de cualquier año:</b></p>
+        <div class="sql-box">SELECT * from pedido p where p.estado = 'entregado' AND MONTH(p.fecha_pedido) = 1;</div>
+        
+        <p><b>c. Productos ornamentales (>100 stock) ordenados por precio:</b></p>
+        <div class="sql-box">SELECT * from producto p where p.gama = 'Ornamentales' AND p.stock > 100 ORDER BY p.precio_venta DESC;</div>
+        
+        <p><b>d. Gamas compradas por cada cliente:</b></p>
+        <div class="sql-box">SELECT  distinct c.nombre_cliente ,p2.gama from cliente c join pedido p on c.codigo_cliente = p.codigo_cliente join detalle_pedido dp on p.codigo_pedido = dp.codigo_pedido join producto p2 on dp.codigo_producto = p2.codigo_producto</div>
+    </div>
+
+<script type="py">
+from pyscript import document
+import statistics
+
+# --- Lógica Validador de Contraseña ---
+def validar_pass(e):
+    p = document.querySelector("#pass_input").value
+    if not p:
+        document.querySelector("#out_pass").innerText = "Introduce una contraseña..."
+        return
+
+    errores = []
+    if len(p) < 8: errores.append("- Mínimo 8 caracteres")
+    if not any(c.isupper() for c in p): errores.append("- Al menos una mayúscula")
+    if not any(c.isdigit() for c in p): errores.append("- Al menos un número")
+    if not any(not c.isalnum() for c in p): errores.append("- Al menos un carácter especial")
+
+    if not errores:
+        document.querySelector("#out_pass").style.color = "#55efc4"
+        document.querySelector("#out_pass").innerText = "Válida"
+    else:
+        document.querySelector("#out_pass").style.color = "#fab1a0"
+        document.querySelector("#out_pass").innerText = "Inválida:\n" + "\n".join(errores)
+
+# --- Lógica Procesamiento JSON ---
+def procesar_usuarios():
+    # El JSON de la imagen
+    usuarios = [
+        {"nombre": "Ana", "edad": 25},
+        {"nombre": "Luis", "edad": 17},
+        {"nombre": "Carlos", "edad": 30}
+    ]
+    
+    # 1. Filtre mayores de edad (>= 18)
+    mayores = [u for u in usuarios if u['edad'] >= 18]
+    
+    # 2. Muestre sus nombres
+    nombres = [u['nombre'] for u in mayores]
+    
+    # 3. Calcule la edad media (de todos)
+    edades = [u['edad'] for u in usuarios]
+    media = sum(edades) / len(edades)
+    
+    res = f"Mayores de edad: {', '.join(nombres)}\n"
+    res += f"Edad media total: {media:.2f} años"
+    document.querySelector("#out_json").innerText = res
+
+# Ejecutar proceso JSON al cargar
+procesar_usuarios()
+</script>
+
+</body>
+</html>
