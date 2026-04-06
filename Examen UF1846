@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Respuestas de Teoría - Arquitectura y APIs</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f4f7f6; color: #2c3e50; }
+        .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        h1 { text-align: center; color: #34495e; border-bottom: 3px solid #3498db; pb: 10px; }
+        h2 { color: #2980b9; font-size: 1.4rem; border-left: 5px solid #3498db; padding-left: 10px; margin-top: 30px; }
+        .pregunta { font-weight: bold; color: #16a085; margin-top: 15px; display: block; }
+        .respuesta { background: #f9f9f9; padding: 10px; border-radius: 5px; display: block; margin-top: 5px; border-left: 3px solid #bdc3c7; }
+        code { background: #eee; padding: 2px 5px; border-radius: 4px; font-family: monospace; color: #e67e22; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; padding: 10px; background: #fff; border: 1px solid #eee; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Examen UF1846</h1>
+
+    <div class="card">
+        <h2>1. El Sistema Web</h2>
+        <span class="pregunta">¿Qué parte es el frontend?</span>
+        <span class="respuesta">El <b>Navegador</b>, ya que es el encargado de mostrar la web y permitir la interacción con el usuario.</span>
+
+        <span class="pregunta">¿Qué parte es el backend?</span>
+        <span class="respuesta">El <b>Servidor</b>, que es el que recibe y procesa las peticiones del navegador.</span>
+
+        <span class="pregunta">¿Es una arquitectura distribuida? ¿Por qué?</span>
+        <span class="respuesta"><b>Sí</b>. Porque las responsabilidades están repartidas en nodos distintos (Cliente/Navegador, Servidor y Base de Datos) que se comunican a través de una red para funcionar como un solo sistema.</span>
+    </div>
+
+    <div class="card">
+        <h2>2 & 3. Diseño de APIs</h2>
+        <p>Análisis de los endpoints para la gestión de usuarios y tareas:</p>
+        <ul>
+            <li><code>GET /usuarios</code>: <b>Obtener</b> todos los usuarios de la base de datos.</li>
+            <li><code>POST /usuarios</code>: <b>Crear</b> un nuevo registro de usuario. (<i>Este usarías para crear</i>).</li>
+            <li><code>GET /usuarios/5</code>: <b>Consultar</b> la información específica del usuario con ID 5.</li>
+            <li><code>DELETE /usuarios/5</code>: <b>Eliminar</b> al usuario con ID 5 del sistema. (<i>Este usarías para eliminar</i>).</li>
+        </ul>
+        <p><b>Propuesta para To-Do List:</b></p>
+        <ul>
+            <li><code>GET /tareas</code> (Obtener)</li>
+            <li><code>POST /tareas</code> (Crear)</li>
+            <li><code>PUT /tareas/id</code> (Actualizar)</li>
+            <li><code>DELETE /tareas/id</code> (Eliminar)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. Análisis de Datos (JSON)</h2>
+        <span class="pregunta">¿Qué tipo de formato es este?</span>
+        <span class="respuesta">Es un formato <b>JSON</b> (JavaScript Object Notation).</span>
+
+        <span class="pregunta">¿Qué valor tiene "nombre"?</span>
+        <span class="respuesta">El valor es <code>"Juan"</code>.</span>
+
+        <span class="pregunta">¿El usuario está activo?</span>
+        <span class="respuesta"><b>Sí</b>, porque el campo <code>"activo"</code> tiene el valor <code>true</code>.</span>
+
+        <span class="pregunta">¿Qué tipo de dato es "activo"?</span>
+        <span class="respuesta">Es un tipo de dato <b>Booleano</b> (Boolean).</span>
+    </div>
+
+    <div class="card">
+        <h2>5. Orden Correcto del Proceso</h2>
+        <p>El flujo lógico de una petición web es:</p>
+        <ol>
+            <li><b>(3)</b> El usuario hace una petición.</li>
+            <li><b>(1)</b> El servidor consulta la base de datos.</li>
+            <li><b>(4)</b> El servidor envía una respuesta.</li>
+            <li><b>(2)</b> El navegador muestra los datos.</li>
+        </ol>
+        <p style="text-align: center; font-weight: bold; color: #3498db;">Orden final: 3 → 1 → 4 → 2</p>
+    </div>
+
+</body>
+</html>
