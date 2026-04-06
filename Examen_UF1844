@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen UF1844</title>
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; background: #f8f9fa; }
+        .box { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .out { color: #2c3e50; font-family: monospace; margin-top: 10px; white-space: pre-wrap; background: #ecf0f1; padding: 10px; border-radius: 4px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+        button { padding: 8px 12px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 4px; }
+        h3 { margin-top: 0; color: #2980b9; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <h2>Solución Parte Práctica</h2>
+
+    <div class="box">
+        <h3>1. Datos de Nombre</h3>
+        <input id="in1" py-input="ej1" placeholder="Escribe tu nombre completo...">
+        <div id="out1" class="out">Esperando nombre...</div>
+    </div>
+
+    <div class="box">
+        <h3>2. Lista de 5 Números</h3>
+        <input id="in2" py-input="ej2" placeholder="Introduce 5 números separados por coma (ej: 1,2,3,4,5)">
+        <div id="out2" class="out">Introduce los números...</div>
+    </div>
+
+    <div class="box">
+        <h3>3. Datos Personales</h3>
+        <input id="in3n" py-input="ej3" placeholder="Nombre">
+        <input id="in3e" py-input="ej3" placeholder="Edad">
+        <input id="in3c" py-input="ej3" placeholder="Ciudad">
+        <div id="out3" class="out">Completa los campos...</div>
+    </div>
+
+    <div class="box">
+        <h3>4. Función Área Rectángulo</h3>
+        <input id="in4b" type="number" py-input="ej4" placeholder="Base">
+        <input id="in4a" type="number" py-input="ej4" placeholder="Altura">
+        <div id="out4" class="out">Resultado...</div>
+    </div>
+
+    <div class="box">
+        <h3>5. Gestión de Inventario</h3>
+        <input id="inv_p" placeholder="Producto (ej: manzanas)">
+        <input id="inv_c" type="number" placeholder="Cantidad">
+        <div style="margin: 10px 0;">
+            <button py-click="inv_add">Añadir</button>
+            <button py-click="inv_del" style="background:#e74c3c">Eliminar</button>
+        </div>
+        <div id="out_inv" class="out">Cargando inventario...</div>
+    </div>
+
+<script type="py">
+from pyscript import document
+
+# --- 1. Nombre ---
+def ej1(e):
+    val = document.querySelector("#in1").value
+    if val:
+        res = f"Mayúsculas: {val.upper()}\nMinúsculas: {val.lower()}\nCaracteres: {len(val)}\nSin espacios: {val.strip()}"
+        document.querySelector("#out1").innerText = res
+
+# --- 2. Números ---
+def ej2(e):
+    try:
+        raw = document.querySelector("#in2").value
+        nums = [float(x.strip()) for x in raw.split(",") if x.strip()]
+        if len(nums) >= 5:
+            res = f"Lista: {nums[:5]}\nMayor: {max(nums[:5])}\nMenor: {min(nums[:5])}\nSuma: {sum(nums[:5])}"
+            document.querySelector("#out2").innerText = res
+    except: pass
+
+# --- 3. Diccionario ---
+def ej3(e):
+    n = document.querySelector("#in3n").value
+    e_val = document.querySelector("#in3e").value
+    c = document.querySelector("#in3c").value
+    if n and e_val and c:
+        user_dict = {"nombre": n, "edad": e_val, "ciudad": c}
+        document.querySelector("#out3").innerText = f"{user_dict['nombre']} tiene {user_dict['edad']} años y vive en {user_dict['ciudad']}."
+
+# --- 4. Área (Con validación) ---
+def area_rectangulo(base, altura):
+    return base * altura
+
+def ej4(e):
+    try:
+        b = float(document.querySelector("#in4b").value)
+        a = float(document.querySelector("#in4a").value)
+        if b > 0 and a > 0:
+            document.querySelector("#out4").innerText = f"Área: {area_rectangulo(b, a)}"
+        else:
+            document.querySelector("#out4").innerText = "Los valores deben ser positivos"
+    except: pass
+
+# --- 5. Inventario (Estructura de la imagen) ---
+inventario = {
+    "manzanas": 10,
+    "peras": 5,
+    "naranjas": 8
+}
+
+def inv_show(e):
+    res = "--- INVENTARIO ACTUAL ---\n"
+    for p, c in inventario.items():
+        res += f"- {p}: {c}\n"
+    document.querySelector("#out_inv").innerText = res
+
+def inv_add(e):
+    p = document.querySelector("#inv_p").value.lower().strip()
+    c = document.querySelector("#inv_c").value
+    if p and c:
+        inventario[p] = int(c)
+        inv_show(None)
+
+def inv_del(e):
+    p = document.querySelector("#inv_p").value.lower().strip()
+    if p in inventario:
+        del inventario[p]
+        inv_show(None)
+    else:
+        document.querySelector("#out_inv").innerText = f"'{p}' no existe."
+
+# Mostrar inventario al cargar
+inv_show(None)
+</script>
+
+</body>
+</html>
