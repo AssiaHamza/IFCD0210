@@ -84,7 +84,7 @@ def ej3(e):
         user_dict = {"nombre": n, "edad": e_val, "ciudad": c}
         document.querySelector("#out3").innerText = f"{user_dict['nombre']} tiene {user_dict['edad']} años y vive en {user_dict['ciudad']}."
 
-# --- 4. Área (Con validación) ---
+# --- 4. Área ---
 def area_rectangulo(base, altura):
     return base * altura
 
@@ -98,7 +98,7 @@ def ej4(e):
             document.querySelector("#out4").innerText = "Los valores deben ser positivos"
     except: pass
 
-# --- 5. Inventario (Estructura de la imagen) ---
+# --- 5. Inventario ---
 inventario = {
     "manzanas": 10,
     "peras": 5,
